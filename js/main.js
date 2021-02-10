@@ -13,10 +13,11 @@ function onSave(ev) {
     var elColor = document.getElementById('color').value;
     var elOutline = document.getElementById('color-outline').value;
     var elMeme = document.getElementById('meme-txt').value;
+    var posY = 40;
+    var posX = gElCanvas.width / 2;
 
-    updateMeme(elMeme, elColor, elOutline);
-    console.log('current meme:', gMeme);
-    drawText(gElCanvas.width / 2, 40);
+    updateMeme(elMeme, posY, elColor, elOutline);
+    drawText(posX, posY);
 }
 
 function onChoosePic(pic) {
@@ -50,15 +51,6 @@ function drawImg(url) {
     }
 }
 
-
-function downloadCanvas(elLink) {
-    const data = gElCanvas.toDataURL()
-    // console.log('downloadCanvas -> data', data)
-    elLink.href = data
-    elLink.download = 'puki'
-}
-
-
 function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     renderCanvas();
@@ -68,16 +60,10 @@ function clearCanvas() {
 }
 
 
-function downloadCanvas(elLink) {
-    const data = gElCanvas.toDataURL()
-    elLink.href = data
-    elLink.download = 'my-img.jpg'
-}
-
-
 function renderCanvas() {
     gCtx.fillStyle = "antiquewhite";
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
+    gCtx = gElCanvas.getContext('2d');
 }
 
 
@@ -95,8 +81,8 @@ function renderShape() {
 function renderPhotos() {
     var strHtml = '';
     gGallery.map((photo) => {
-        strHtml += `<div class="pic pic${photo.id}" data-id="${photo.id}" onclick="onChoosePic(this)" style="background: url('../sqr-img/${photo.id}.jpg');"></div>`
+        strHtml += `<div class="pic pic${photo.id}" data-id="${photo.id}" onclick="onChoosePic(this)" 
+        style="background: url('../sqr-img/${photo.id}.jpg');"></div>`
     });
     document.querySelector('.photo-gallery').innerHTML = strHtml;
-    // console.log(strHtml);
 }

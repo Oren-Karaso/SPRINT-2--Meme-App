@@ -1,5 +1,6 @@
 'use strict'
 
+var STORAGE_KEY = 'my-meme';
 var gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 
 // let gCurrentSahpe;
@@ -19,16 +20,14 @@ var gGallery = [{ id: 1, url: 'sqr-img/1.jpg', keywords: ['speach', 'dictators',
                 {id: 8, url: 'sqr-img/8.jpg', keywords: ['cunning', 'magician', 'patience']}, 
                 {id: 9, url: 'sqr-img/9.jpg', keywords: ['evil', 'freak', 'baby']}, 
                 {id: 10, url: 'sqr-img/10.jpg', keywords: ['happy', 'laugh', 'smile']}];
-                
+
 var gKeywords = { 'happy': 12, 'funny puk': 1 };
 
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [{ txt: 'I never eat Falafel', size: 20, align: 'left', fillColor: 'red', outlineColor: 'red' }]
+    lines: [{ txt: 'I never eat Falafel', posY: 0, size: 20, align: 'left', fillColor: 'red', outlineColor: 'red' }]
 }
-
-
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container');
@@ -43,10 +42,10 @@ function downloadCanvas(elLink) {
 }
 
 function getPicById(id) {
-    console.log(id)
+    // console.log(id)
    var currPic = gGallery.find(photo => photo.id === id);
     
-    console.log(currPic);
+    // console.log(currPic);
     return currPic;
 }
 
@@ -62,20 +61,15 @@ function getMemeOutlineClr() {
     return gMeme.lines.outlineColor;
 }
 
-// function updateColor(color) {
-//     gCurrentColor = color;
-// }
-
-// function updateOutlineColor(color) {
-//     gCurrOutlineColor = color;
-// }
-
-function updateMeme(txt, fillColor, outlineColor) {
+function updateMeme(txt, posY, fillColor, outlineColor) {
     gMeme.lines.txt = txt;
     gMeme.lines.size = txt.length;
+    gMeme.posY = posY;
     gMeme.lines.fillColor = fillColor;
     gMeme.lines.outlineColor = outlineColor;
 }
+
+
 
 function addListeners() {
     addMouseListeners();
