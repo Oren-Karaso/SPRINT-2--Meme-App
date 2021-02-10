@@ -25,39 +25,51 @@
         <header>
         </header>
 
-        <section class="canvas-container">
+        <div class="main-container">
 
-            <canvas id="my-canvas" height="400" width="500" onclick="draw(event)"></canvas>
+            <h2 class="h2-gallery">Choose a pic for your meme</h2>
+            <section class="photo-gallery">
+                <div class="pic pic1" data-id="1" onclick="onChoosePic(this)"></div>
+                <div class="pic pic2" data-id="2" onclick="onChoosePic(this)"></div>
+            </section>
 
-            <section class="controllers-container">
-                <section class="user-inputs">
-                    <form onsubmit="onSave(event)" class="inputs-form">
-                        <h3 class="shape">Write Your Meme:</h3>
-                        <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
-                        
-                        <div class="btns">
-                        <button class="switch">⇅</button>
-                        <button class="add-line">+</button>
-                        <button class="delete" onclick="drawImgFromlocal()">🗑️</button>
-                        <button class="font-+">A+</button>
-                        <button class="font-">A-</button>
-                        <button class="rtl-ltr">ltr</button>
-                    </div>
+            <section class="canvas-container">
 
-                        <h3 class="color">Choose A Filling Color:</h3>
-                        <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
-                        <h3 class="color-outline ">Choose An outline Color:</h3>
-                        <input class="color-outline" type="color" id="color-outline" form="inputs-form" value="#ff0000" />
-                        <!-- <select class="shape-select margin-right" id="select-shape" form="inputs-form">
+                <canvas id="my-canvas" height="400" width="500" onclick="draw(event)"></canvas>
+
+                <section class="controllers-container">
+                    <section class="user-inputs">
+                        <form onsubmit="onSave(event)" class="inputs-form">
+                            <h3 class="shape">Write Your Meme:</h3>
+                            <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
+
+                            <div class="btns">
+                                <button class="switch">⇅</button>
+                                <button class="add-line">+</button>
+                                <button class="delete" onclick="drawImgFromlocal()">🗑️</button>
+                                <button class="font-+">A+</button>
+                                <button class="font-">A-</button>
+                                <button class="rtl-ltr">ltr</button>
+                            </div>
+
+                            <h3 class="color">Choose A Filling Color:</h3>
+                            <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
+                            <h3 class="color-outline ">Choose An outline Color:</h3>
+                            <input class="color-outline" type="color" id="color-outline" form="inputs-form"
+                                value="#ff0000" />
+                            <!-- <select class="shape-select margin-right" id="select-shape" form="inputs-form">
                             <option value="rectangle">Rectangle</option>
                             <option value="triangle">Triangle</option>
                             <option value="circle">Circle</option>
                         </select> -->
-                        <button class="save-inputs">Save Changes</button>
-                    </form>
+                            <button class="save-inputs">Save Changes</button>
+                        </form>
+                    </section>
                 </section>
             </section>
-        </section>
+
+        </div>
+
 
         <script src="js/util.js"></script>
         <script src="js/storage-service.js"></script>

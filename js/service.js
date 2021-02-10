@@ -1,16 +1,18 @@
 'use strict'
 
-const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
+var gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 
 // let gCurrentSahpe;
 // let gCurrentColor;
 // let gCurrOutlineColor;
-let gElCanvas;
-let gCtx;
+var gElCanvas;
+var gCtx;
 var gStartPos;
 
-let gGallery = [{ id: 1, url: 'sqr-img/1.jpg', keywords: ['speach'] }];
-var gKeywords = { 'happy': 12, 'funny puk': 1 }
+var gGallery = [{ id: 1, url: 'sqr-img/1.jpg', keywords: ['speach'] }, 
+                { id: 2, url: 'sqr-img/2.jpg', keywords: ['love'] }];
+var gKeywords = { 'happy': 12, 'funny puk': 1 };
+
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -41,6 +43,19 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight;
 }
 
+function downloadCanvas(elLink) {
+    const data = gElCanvas.toDataURL()
+    elLink.href = data;
+    elLink.download = 'my-img.jpg';
+}
+
+function getPicById(id) {
+    console.log(id)
+   var currPic = gGallery.find(photo => photo.id === id);
+    
+    console.log(currPic);
+    return currPic;
+}
 
 function getMemeTxt() {
     return gMeme.lines.txt;

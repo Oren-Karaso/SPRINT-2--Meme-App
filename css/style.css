@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+/* HELPERS */
+
+.grid {
+    display: grid;
+}
+
+/* ///////////////////////////////////////////////////////////////////////// */
+
 body {
     margin: 0;
     /* height: 100vh; */
@@ -27,7 +35,6 @@ canvas {
     border: 2px solid rgb(9, 2, 105);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    
 }
 
 .controllers-container {
@@ -56,5 +63,46 @@ button {
     margin-top: 10px;
 }
 
+.main-container {
+    display: flex;
+    justify-content: center;
+}
 
+.h2-gallery {
+position: absolute;
+z-index: 1;
+visibility: visible;
+}
 
+.photo-gallery {
+    background-color: bisque;
+    outline: 2px solid black;
+    position: absolute;
+    visibility: visible;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-rows: repeat(auto-fit, 250px);
+    grid-auto-flow: dense;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 50%;
+    height: 90vh;
+    align-content: center;
+    justify-content: center;
+}
+
+.pic1 {
+    background: url("../sqr-img/1.jpg");
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.pic2 {
+    background: url("../../sqr-img/2.jpg");
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+
+}

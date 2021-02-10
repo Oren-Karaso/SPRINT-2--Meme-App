@@ -4,10 +4,8 @@ function init() {
     gElCanvas = document.getElementById('my-canvas');
     gCtx = gElCanvas.getContext('2d');
     console.log('init -> gCtx', gCtx);
-    drawImg();
-    drawText('asshole', gElCanvas.width / 2, gElCanvas.height - 10);
+    // drawImg();
 }
-
 
 function onSave(ev) {
     ev.preventDefault();
@@ -19,6 +17,17 @@ function onSave(ev) {
     updateMeme(elMeme, elColor, elOutline);
     console.log('current meme:', gMeme);
     drawText(gElCanvas.width / 2, 40);
+}
+
+function onChoosePic(pic) {
+    var photoId = +pic.dataset.id;
+    var currPhoto = getPicById(photoId);
+    var elPhotosContainer = document.querySelector('.photo-gallery').style;
+    var elTitle = document.querySelector('.h2-gallery').style;
+    elPhotosContainer.visibility = 'hidden';
+    elTitle.visibility = 'hidden';
+    drawImg(currPhoto.url);
+
 }
 
 
@@ -33,9 +42,9 @@ function drawText(x, y) {
 }
 
 
-function drawImg() {
+function drawImg(url) {
     const img = new Image()
-    img.src = 'sqr-img/1.jpg';
+    img.src = url;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     }
@@ -55,15 +64,6 @@ function clearCanvas() {
     
     // You may clear part of the canvas
     // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height/4)
-}
-
-
-function drawImgFromlocal() {
-    const img = new Image()
-    img.src = 'img/1.jpg';
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xend,yend
-    }
 }
 
 
