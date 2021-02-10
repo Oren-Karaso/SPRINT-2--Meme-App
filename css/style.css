@@ -50,6 +50,11 @@ canvas {
     align-items: center;
 }
 
-.save-inputs {
+button {
+    font-family: cursive;
+    font-weight: bolder;
     margin-top: 10px;
 }
+
+
+
