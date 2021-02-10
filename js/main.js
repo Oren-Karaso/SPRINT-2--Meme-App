@@ -14,21 +14,22 @@ function onSave(ev) {
 
     var elColor = document.getElementById('color').value;
     var elOutline = document.getElementById('color-outline').value; 
+    var elMeme = document.getElementById('meme-txt').value; 
 
-    updateColor(elColor);
-    updateOutlineColor(elOutline);
-    console.log('shape and color:', gCurrentSahpe, gCurrentColor);
+    updateMeme(elMeme, elColor, elOutline);
+    console.log('current meme:', gMeme);
+    drawText(gElCanvas.width / 2, 40);
 }
 
 
-function drawText(text, x, y) {
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'red'
-    gCtx.fillStyle = 'white'
-    gCtx.font = '40px Impact'
-    gCtx.textAlign = 'center'
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+function drawText(x, y) {
+    gCtx.lineWidth = 2;
+    gCtx.strokeStyle = getMemeOutlineClr();
+    gCtx.fillStyle = getMemeFillClr();
+    gCtx.font = '40px Impact';
+    gCtx.textAlign = 'center';
+    gCtx.fillText(getMemeTxt(), x, y);
+    gCtx.strokeText(getMemeTxt(), x, y);
 }
 
 
@@ -51,6 +52,7 @@ function downloadCanvas(elLink) {
 
 function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+    
     // You may clear part of the canvas
     // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height/4)
 }
@@ -58,7 +60,7 @@ function clearCanvas() {
 
 function drawImgFromlocal() {
     const img = new Image()
-    img.src = './img/1.jpg';
+    img.src = 'img/1.jpg';
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xend,yend
     }
