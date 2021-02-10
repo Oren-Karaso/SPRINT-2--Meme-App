@@ -61,6 +61,7 @@ function downloadCanvas(elLink) {
 
 function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+    renderCanvas();
     
     // You may clear part of the canvas
     // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height/4)

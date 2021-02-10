@@ -100,7 +100,7 @@ visibility: visible;
 }
 
 .pic2 {
-    background: url("../../sqr-img/2.jpg");
+    background: url("../sqr-img/2.jpg");
     background-position: center center;
     background-size: cover;
     cursor: pointer;
