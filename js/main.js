@@ -4,15 +4,15 @@ function init() {
     gElCanvas = document.getElementById('my-canvas');
     gCtx = gElCanvas.getContext('2d');
     console.log('init -> gCtx', gCtx);
-    // drawImg();
+    renderPhotos();
 }
 
 function onSave(ev) {
     ev.preventDefault();
 
     var elColor = document.getElementById('color').value;
-    var elOutline = document.getElementById('color-outline').value; 
-    var elMeme = document.getElementById('meme-txt').value; 
+    var elOutline = document.getElementById('color-outline').value;
+    var elMeme = document.getElementById('meme-txt').value;
 
     updateMeme(elMeme, elColor, elOutline);
     console.log('current meme:', gMeme);
@@ -62,7 +62,7 @@ function downloadCanvas(elLink) {
 function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     renderCanvas();
-    
+
     // You may clear part of the canvas
     // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height/4)
 }
@@ -72,4 +72,31 @@ function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-img.jpg'
+}
+
+
+function renderCanvas() {
+    gCtx.fillStyle = "antiquewhite";
+    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
+}
+
+
+function renderShape() {
+    const { pos, color, size } = gCurrentSahpe;
+    switch (gCurrentSahpe.name) {
+        case 'triangle': drawTriangle(pos.x, pos.y);
+            break;
+        case 'rectangle': drawRect(pos.x, pos.y);
+            break;
+        case 'circle': drawArc(pos.x, pos.y);
+    }
+}
+
+function renderPhotos() {
+    var strHtml = '';
+    gGallery.map((photo) => {
+        strHtml += `<div class="pic pic${photo.id}" data-id="${photo.id}" onclick="onChoosePic(this)" style="background: url('../sqr-img/${photo.id}.jpg');"></div>`
+    });
+    document.querySelector('.photo-gallery').innerHTML = strHtml;
+    // console.log(strHtml);
 }

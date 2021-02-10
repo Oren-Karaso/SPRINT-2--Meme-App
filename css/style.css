@@ -69,15 +69,15 @@ button {
 }
 
 .h2-gallery {
-position: absolute;
-z-index: 1;
-visibility: visible;
+    position: absolute;
+    z-index: 1;
+    visibility: visible;
 }
 
 .photo-gallery {
     background-color: bisque;
     outline: 2px solid black;
-    position: absolute;
+    position: fixed;
     visibility: visible;
     display: grid;
     grid-template-columns: repeat(auto-fit, 250px);
@@ -86,23 +86,15 @@ visibility: visible;
     gap: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 50%;
+    width: 65%;
     height: 90vh;
     align-content: center;
     justify-content: center;
+    overflow-y: scroll;
 }
 
-.pic1 {
-    background: url("../sqr-img/1.jpg");
+.pic {
     background-position: center center;
     background-size: cover;
     cursor: pointer;
-}
-
-.pic2 {
-    background: url("../sqr-img/2.jpg");
-    background-position: center center;
-    background-size: cover;
-    cursor: pointer;
-
 }

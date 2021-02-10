@@ -9,8 +9,17 @@ var gElCanvas;
 var gCtx;
 var gStartPos;
 
-var gGallery = [{ id: 1, url: 'sqr-img/1.jpg', keywords: ['speach'] }, 
-                { id: 2, url: 'sqr-img/2.jpg', keywords: ['love'] }];
+var gGallery = [{ id: 1, url: 'sqr-img/1.jpg', keywords: ['speach', 'dictators', 'smug'] }, 
+                { id: 2, url: 'sqr-img/2.jpg', keywords: ['love', 'dogs', 'puppies', 'caring'] }, 
+                {id: 3, url: 'sqr-img/3.jpg', keywords: ['love', 'peacfull', 'baby']}, 
+                {id: 4, url: 'sqr-img/4.jpg', keywords: ['cute', 'peacfull', 'chill']}, 
+                {id: 5, url: 'sqr-img/5.jpg', keywords: ['achieveness', 'baby', 'succsess']}, 
+                {id: 6, url: 'sqr-img/6.jpg', keywords: ['crazy', 'hairstyle', 'passionate']}, 
+                {id: 7, url: 'sqr-img/7.jpg', keywords: ['in shock', 'whatttt', 'baby']}, 
+                {id: 8, url: 'sqr-img/8.jpg', keywords: ['cunning', 'magician', 'patience']}, 
+                {id: 9, url: 'sqr-img/9.jpg', keywords: ['evil', 'freak', 'baby']}, 
+                {id: 10, url: 'sqr-img/10.jpg', keywords: ['happy', 'laugh', 'smile']}];
+                
 var gKeywords = { 'happy': 12, 'funny puk': 1 };
 
 var gMeme = {
@@ -20,22 +29,6 @@ var gMeme = {
 }
 
 
-function renderCanvas() {
-    gCtx.fillStyle = "antiquewhite";
-    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
-}
-
-
-function renderShape() {
-    const { pos, color, size } = gCurrentSahpe;
-    switch (gCurrentSahpe.name) {
-        case 'triangle': drawTriangle(pos.x, pos.y);
-            break;
-        case 'rectangle': drawRect(pos.x, pos.y);
-            break;
-        case 'circle': drawArc(pos.x, pos.y);
-    }
-}
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container');
