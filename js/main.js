@@ -21,20 +21,34 @@ function onChoosePic(pic) {
 function onSave(ev) {
     ev.preventDefault();
 
+    if (gLinesOnScreen === 3) return console.log('Too many text lines');
+
     var elColor = document.getElementById('color').value;
     var elOutline = document.getElementById('color-outline').value;
     var elMeme = document.getElementById('meme-txt').value;
     var posY = 40;
-    var posX = gElCanvas.width / 2;
-    var meme = {
-        txt: elMeme, posY: posY, posX: posX, size: 40, align: 'center',
-        fillColor: elColor, outlineColor: elOutline, font: ''
-    };
+    var posX = (gElCanvas.width) / 2;
 
-    makeMeme(meme);
-    // updateMeme(elMeme, posY, elColor, elOutline);
-    drawText(posX, posY);
+    var currMeme = getCurrMeme();
+    if (currMeme.txt !== '') {
+        var meme = {
+            txt: elMeme, posY: posY, posX: posX, size: 40, align: 'center',
+            fillColor: elColor, outlineColor: elOutline, font: 'Impact'
+        };
+        makeMeme(meme);
+        gLinesOnScreen++;
+    } else {
+        updateMeme(elMeme, posY, posX, elColor, elOutline);
+    }
+    document.getElementById('meme-txt').value = '';
+    document.getElementById('meme-txt').placeholder = 'Your Meme...';
+    drawText();
 }
+
+function onSwitchLines() {
+    switchLine();
+}
+
 
 function onMoveText(elBtn) {        // for some reason coulnd't use gElCanvas.length in some of the conditions
     var currMeme = getCurrMeme();
@@ -52,7 +66,7 @@ function onMoveText(elBtn) {        // for some reason coulnd't use gElCanvas.le
     } else if (elBtn.innerText === '🡪') {
         if (!(currMeme.posX + 10 < 420)) return console.log('Not enough space');
         updateMemePosXY(currMeme.posX + 10, currMeme.posY);
-        
+
     } else if (elBtn.innerText === '🡨') {
         if (!(currMeme.posX - 10 > 70)) return console.log('Not enough space');
 
@@ -62,7 +76,11 @@ function onMoveText(elBtn) {        // for some reason coulnd't use gElCanvas.le
     gCtx.save();
     var currPic = getPicById(gMeme.selectedImgId);
     drawImg(currPic.url);
-    drawText(currMeme.posX, currMeme.posY);
+    
+    gMeme.lines.map(meme => {
+           drawText();
+        switchLine();
+    });
 }
 
 function onChangeSize(elBtn) {
@@ -73,10 +91,10 @@ function onChangeSize(elBtn) {
     gCtx.save();
     var currPic = getPicById(gMeme.selectedImgId);
     drawImg(currPic.url);
-    drawText(currMeme.posX, currMeme.posY);
+    drawText();
 }
 
-function drawText(x, y) {
+function drawText() {
 
     var currMeme = getCurrMeme();
 
@@ -85,8 +103,8 @@ function drawText(x, y) {
     gCtx.fillStyle = currMeme.fillColor;
     gCtx.font = `${currMeme.size}px Impact`;
     gCtx.textAlign = currMeme.align;
-    gCtx.fillText(currMeme.txt, x, y);
-    gCtx.strokeText(currMeme.txt, x, y);
+    gCtx.fillText(currMeme.txt, currMeme.posX, currMeme.posY);
+    gCtx.strokeText(currMeme.txt, currMeme.posX, currMeme.posY);
 }
 
 function drawImg(url) {
@@ -101,6 +119,7 @@ function clearCanvas() {
     var currPic = getPicById(gMeme.selectedImgId);
     var currUrl = currPic.url;
     drawImg(currUrl);
+    deleteCurrMeme();
 }
 
 
@@ -109,6 +128,15 @@ function renderCanvas() {
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
 }
 
+
+function renderPhotos() {
+    var strHtml = '';
+    gGallery.map((photo) => {
+        strHtml += `<div class="pic pic${photo.id}" data-id="${photo.id}" onclick="onChoosePic(this)" 
+        style="background: url('sqr-img/${photo.id}.jpg');"></div>`
+    });
+    document.querySelector('.photo-gallery').innerHTML = strHtml;
+}
 
 // function renderShape() {
 //     const { pos, color, size } = gCurrentSahpe;
@@ -120,12 +148,3 @@ function renderCanvas() {
 //         case 'circle': drawArc(pos.x, pos.y);
 //     }
 // }
-
-function renderPhotos() {
-    var strHtml = '';
-    gGallery.map((photo) => {
-        strHtml += `<div class="pic pic${photo.id}" data-id="${photo.id}" onclick="onChoosePic(this)" 
-        style="background: url('sqr-img/${photo.id}.jpg');"></div>`
-    });
-    document.querySelector('.photo-gallery').innerHTML = strHtml;
-}

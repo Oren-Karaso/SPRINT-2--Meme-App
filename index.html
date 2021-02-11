@@ -41,6 +41,7 @@
                         <form onsubmit="onSave(event)" class="inputs-form">
                             <h3 class="shape">Write Your Meme:</h3>
                             <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
+
                             <h3 class="color">Choose A Filling Color:</h3>
                             <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
                             <h3 class="color-outline ">Choose An outline Color:</h3>
@@ -51,7 +52,7 @@
                             <option value="triangle">Triangle</option>
                             <option value="circle">Circle</option>
                         </select> -->
-                            <button class="save-inputs">Save Changes</button>
+                            <button class="save-inputs">Add +</button>
                         </form>
 
                         <div class="btns">
@@ -60,8 +61,7 @@
                             <button class="move-right" onclick="onMoveText(this)">🡪</button>
                             <button class="move-left" onclick="onMoveText(this)">🡨</button>
                             <button class="delete" onclick="clearCanvas()">🗑️</button>
-                            <button class="switch" onclick="onSwitchLine()">⇵</button>
-                            <button class="add-line" onclick="onAddLine()">+</button>
+                            <button class="switch" onclick="onSwitchLines()">⇵</button>
                             <!-- <button class="add-line" onclick="onChooseFont()">+</button> -->
                             <button class="font-+" onclick="onChangeSize(this)">A+</button>
                             <button class="font-" onclick="onChangeSize(this)">A-</button>

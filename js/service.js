@@ -9,6 +9,7 @@ var gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 var gElCanvas;
 var gCtx;
 var gStartPos;
+var gLinesOnScreen = 1;
 
 var gGallery = [{ id: 1, url: 'sqr-img/1.jpg', keywords: ['speach', 'dictators', 'smug'] },
 { id: 2, url: 'sqr-img/2.jpg', keywords: ['love', 'dogs', 'puppies', 'caring'] },
@@ -26,7 +27,7 @@ var gKeywords = { 'happy': 12, 'funny puk': 1 };
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [{ txt: '', posY: 0, posX: 0, size: 40, align: 'center', fillColor: '', outlineColor: '', font: '' }]
+    lines: [{ txt: '', posY: 0, posX: 0, size: 40, align: 'center', fillColor: '', outlineColor: '', font: 'Impact' }]
 }
 
 function loadMemes() {
@@ -65,13 +66,20 @@ function getCurrMeme() {
     return gMeme.lines[gMeme.selectedLineIdx];
 }
 
-// function updateMeme(txt, posY, fillColor, outlineColor) {
-//     gMeme.lines.txt = txt;
-//     gMeme.lines.size = txt.length;
-//     gMeme.posY = posY;
-//     gMeme.lines.fillColor = fillColor;
-//     gMeme.lines.outlineColor = outlineColor;
-// }
+function switchLine() {
+    if (gLinesOnScreen === 1) return;
+    else if (gMeme.selectedLineIdx + 1 !== gLinesOnScreen) gMeme.selectedLineIdx++;
+    else gMeme.selectedLineIdx = 0;
+}
+
+function updateMeme(txt, posY, posX, fillColor, outlineColor) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+    gMeme.lines[gMeme.selectedLineIdx].size = 40;
+    gMeme.lines[gMeme.selectedLineIdx].posY = posY;
+    gMeme.lines[gMeme.selectedLineIdx].posX = posX;
+    gMeme.lines[gMeme.selectedLineIdx].fillColor = fillColor;
+    gMeme.lines[gMeme.selectedLineIdx].outlineColor = outlineColor;
+}
 
 function updateMemeId(id) {
     gMeme.selectedImgId = id;
@@ -94,6 +102,9 @@ function updateTxtSize(operator) {
 
 function deleteCurrMeme() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+    gLinesOnScreen--;
+    gMeme.selectedLineIdx--;
+    gLinesOnScreen = 1;
     _saveMemeToStorage();
 }
 
