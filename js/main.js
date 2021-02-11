@@ -12,6 +12,7 @@ function onChoosePic(pic) {
     var currPhoto = getPicById(photoId);
     var elPhotosContainer = document.querySelector('.photo-gallery').style;
     var elTitle = document.querySelector('.h2-gallery').style;
+    document.querySelector('.is-blurred').classList.remove('is-blurred');
     elPhotosContainer.visibility = 'hidden';
     elTitle.visibility = 'hidden';
     updateMemeId(photoId);
@@ -84,7 +85,6 @@ function onMoveText(elBtn) {        // for some reason coulnd't use gElCanvas.le
 }
 
 function onChangeSize(elBtn) {
-    var currMeme = getCurrMeme();
     if (elBtn.innerText === 'A+') updateTxtSize('+');
     else updateTxtSize('-');
 
@@ -122,18 +122,17 @@ function clearCanvas() {
     deleteCurrMeme();
 }
 
-
 function renderCanvas() {
     gCtx.fillStyle = "antiquewhite";
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
 }
 
-
 function renderPhotos() {
     var strHtml = '';
     gGallery.map((photo) => {
-        strHtml += `<div class="pic pic${photo.id}" data-id="${photo.id}" onclick="onChoosePic(this)" 
-        style="background: url('sqr-img/${photo.id}.jpg');"></div>`
+        strHtml += `<div class="pic pic${photo.id}" data-id="${photo.id}" onclick="onChoosePic(this)">
+        <img src="sqr-img/${photo.id}.jpg">
+        </div>`
     });
     document.querySelector('.photo-gallery').innerHTML = strHtml;
 }

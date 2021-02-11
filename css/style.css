@@ -8,6 +8,11 @@
     display: grid;
 }
 
+.is-blurred {
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+  }
+
 /* ///////////////////////////////////////////////////////////////////////// */
 
 body {
@@ -27,7 +32,8 @@ canvas {
 }
 
 .canvas-container {
-    background-color: rgb(100, 248, 228);
+    background-image: linear-gradient( rgb(164, 165, 168),rgb(0, 0, 0));
+    border-radius: 10px;
     margin: 0 auto;
     /* padding: 20px; */
     width: 90vw;
@@ -52,7 +58,6 @@ canvas {
     margin-top: 50px;
     margin-right: -110px;
     height: 80%;
-
 }
 
 .inputs-form {
@@ -78,30 +83,37 @@ button {
     z-index: 1;
     visibility: visible;
     top: -15px;
-    background-color: white;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: rgba(70, 69, 69, 0.623);
+    color: white;
+    box-shadow: inset 5px 5px 10px #0e0d0d, inset -5px -5px 10px rgb(19, 18, 18);
 }
 
 .photo-gallery {
-    background-color: bisque;
+    background-image: linear-gradient(rgb(3, 27, 94), rgb(199, 197, 194));
     outline: 2px solid black;
     position: fixed;
     visibility: visible;
     display: grid;
     grid-template-columns: repeat(auto-fit, 250px);
     grid-template-rows: repeat(auto-fit, 250px);
-    grid-auto-flow: dense;
+    /* grid-auto-flow: dense; */
     gap: 8px;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
-    width: 100%;
-    height: 100vh;
-    align-content: center;
+    width: 70%;
+    height: 100%;
     justify-content: center;
     overflow-y: scroll;
+    z-index: 999;
 }
 
-.pic {
-    background-position: center center;
-    background-size: cover;
+.pic img {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
     cursor: pointer;
+    box-shadow: 0 8px 6px -6px black;
+    border-radius: 7%;
 }

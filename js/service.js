@@ -20,7 +20,15 @@ var gGallery = [{ id: 1, url: 'sqr-img/1.jpg', keywords: ['speach', 'dictators',
 { id: 7, url: 'sqr-img/7.jpg', keywords: ['in shock', 'whatttt', 'baby'] },
 { id: 8, url: 'sqr-img/8.jpg', keywords: ['cunning', 'magician', 'patience'] },
 { id: 9, url: 'sqr-img/9.jpg', keywords: ['evil', 'freak', 'baby'] },
-{ id: 10, url: 'sqr-img/10.jpg', keywords: ['happy', 'laugh', 'smile'] }];
+{ id: 10, url: 'sqr-img/10.jpg', keywords: ['happy', 'laugh', 'smile'] },
+{ id: 11, url: 'sqr-img/11.jpg', keywords: ['hug', 'weird', 'whatttt'] },
+{ id: 12, url: 'sqr-img/12.jpg', keywords: ['i choose you', 'achieveness', 'speach'] },
+{ id: 13, url: 'sqr-img/13.jpg', keywords: ['cheers', 'health', 'champagne'] },
+{ id: 14, url: 'sqr-img/14.jpg', keywords: ['matrix', 'what if', 'choose'] },
+{ id: 15, url: 'sqr-img/15.jpg', keywords: ['this', 'small', 'look'] },
+{ id: 16, url: 'sqr-img/16.jpg', keywords: ['joking', 'shy', 'smile'] },
+{ id: 17, url: 'sqr-img/17.jpg', keywords: ['counting', 'dictator', 'this much'] },
+{ id: 18, url: 'sqr-img/18.jpg', keywords: ['infinity', 'hope', 'dreams'] }];
 
 var gKeywords = { 'happy': 12, 'funny puk': 1 };
 
