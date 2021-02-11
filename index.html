@@ -29,7 +29,7 @@
 
             <h2 class="h2-gallery">Choose a pic for your meme</h2>
             <section class="photo-gallery">
-                
+
             </section>
 
             <section class="canvas-container">
@@ -41,18 +41,6 @@
                         <form onsubmit="onSave(event)" class="inputs-form">
                             <h3 class="shape">Write Your Meme:</h3>
                             <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
-
-                            <div class="btns">
-                                <button class="move-down" onclick="onMoveText(this)">🡫</button>
-                                <button class="move-up" onclick="onMoveText(this)">🡩</button>
-                                <button class="switch" onclick="onSwitchLine()">⇵</button>
-                                <button class="add-line" onclick="onAddLine()">+</button>
-                                
-                                <button class="font-+">A+</button>
-                                <button class="font-">A-</button>
-                                <button class="rtl-ltr">ltr</button>
-                            </div>
-
                             <h3 class="color">Choose A Filling Color:</h3>
                             <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
                             <h3 class="color-outline ">Choose An outline Color:</h3>
@@ -65,7 +53,21 @@
                         </select> -->
                             <button class="save-inputs">Save Changes</button>
                         </form>
-                        <button class="delete" onclick="clearCanvas()">🗑️</button>
+
+                        <div class="btns">
+                            <button class="move-down" onclick="onMoveText(this)">🡫</button>
+                            <button class="move-up" onclick="onMoveText(this)">🡩</button>
+                            <button class="move-right" onclick="onMoveText(this)">🡪</button>
+                            <button class="move-left" onclick="onMoveText(this)">🡨</button>
+                            <button class="delete" onclick="clearCanvas()">🗑️</button>
+                            <button class="switch" onclick="onSwitchLine()">⇵</button>
+                            <button class="add-line" onclick="onAddLine()">+</button>
+                            <!-- <button class="add-line" onclick="onChooseFont()">+</button> -->
+                            <button class="font-+" onclick="onChangeSize(this)">A+</button>
+                            <button class="font-" onclick="onChangeSize(this)">A-</button>
+                            <button class="rtl-ltr">ltr</button>
+                        </div>
+
                     </section>
                 </section>
             </section>

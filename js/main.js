@@ -27,46 +27,73 @@ function onSave(ev) {
     var posY = 40;
     var posX = gElCanvas.width / 2;
     var meme = {
-        txt: elMeme, posY: posY, posX: posX, size: elMeme.length, align: 'center',
-        fillColor: elColor, outlineColor: elOutline
+        txt: elMeme, posY: posY, posX: posX, size: 40, align: 'center',
+        fillColor: elColor, outlineColor: elOutline, font: ''
     };
+
     makeMeme(meme);
     // updateMeme(elMeme, posY, elColor, elOutline);
     drawText(posX, posY);
 }
 
-function onMoveDown() {
+function onMoveText(elBtn) {        // for some reason coulnd't use gElCanvas.length in some of the conditions
+    var currMeme = getCurrMeme();
 
+    if (elBtn.innerText === '🡫') {
+        if (!(currMeme.posY + 10 < gElCanvas.height)) return console.log('Not enough space');
+
+        updateMemePosXY(currMeme.posX, currMeme.posY + 10);
+
+    } else if (elBtn.innerText === '🡩') {
+        if (!(currMeme.posY - 10 > 40)) return console.log('Not enough space');
+
+        updateMemePosXY(currMeme.posX, currMeme.posY - 10);
+
+    } else if (elBtn.innerText === '🡪') {
+        if (!(currMeme.posX + 10 < 420)) return console.log('Not enough space');
+        updateMemePosXY(currMeme.posX + 10, currMeme.posY);
+        
+    } else if (elBtn.innerText === '🡨') {
+        if (!(currMeme.posX - 10 > 70)) return console.log('Not enough space');
+
+        updateMemePosXY(currMeme.posX - 10, currMeme.posY);
+    }
+
+    gCtx.save();
+    var currPic = getPicById(gMeme.selectedImgId);
+    drawImg(currPic.url);
+    drawText(currMeme.posX, currMeme.posY);
 }
 
-function onMoveUp() {
-    var currMeme =
-        drawText(gElCanvas.width / 2,)
-}
+function onChangeSize(elBtn) {
+    var currMeme = getCurrMeme();
+    if (elBtn.innerText === 'A+') updateTxtSize('+');
+    else updateTxtSize('-');
 
+    gCtx.save();
+    var currPic = getPicById(gMeme.selectedImgId);
+    drawImg(currPic.url);
+    drawText(currMeme.posX, currMeme.posY);
+}
 
 function drawText(x, y) {
-    gCtx.save();
 
     var currMeme = getCurrMeme();
 
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = currMeme.outlineColor;
     gCtx.fillStyle = currMeme.fillColor;
-    gCtx.font = '40px Impact';
-    gCtx.textAlign = 'center';
+    gCtx.font = `${currMeme.size}px Impact`;
+    gCtx.textAlign = currMeme.align;
     gCtx.fillText(currMeme.txt, x, y);
     gCtx.strokeText(currMeme.txt, x, y);
-
 }
 
-
 function drawImg(url) {
-    const img = new Image()
-    img.src = url;
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    }
+    const elImg = new Image()
+    elImg.src = url;
+
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
 function clearCanvas() {
@@ -74,9 +101,6 @@ function clearCanvas() {
     var currPic = getPicById(gMeme.selectedImgId);
     var currUrl = currPic.url;
     drawImg(currUrl);
-
-    // You may clear part of the canvas
-    // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height/4)
 }
 
 
@@ -85,21 +109,17 @@ function renderCanvas() {
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
 }
 
-function onMoveText(btn) {
 
-}
-
-
-function renderShape() {
-    const { pos, color, size } = gCurrentSahpe;
-    switch (gCurrentSahpe.name) {
-        case 'triangle': drawTriangle(pos.x, pos.y);
-            break;
-        case 'rectangle': drawRect(pos.x, pos.y);
-            break;
-        case 'circle': drawArc(pos.x, pos.y);
-    }
-}
+// function renderShape() {
+//     const { pos, color, size } = gCurrentSahpe;
+//     switch (gCurrentSahpe.name) {
+//         case 'triangle': drawTriangle(pos.x, pos.y);
+//             break;
+//         case 'rectangle': drawRect(pos.x, pos.y);
+//             break;
+//         case 'circle': drawArc(pos.x, pos.y);
+//     }
+// }
 
 function renderPhotos() {
     var strHtml = '';

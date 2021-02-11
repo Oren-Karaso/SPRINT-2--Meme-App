@@ -26,7 +26,7 @@ var gKeywords = { 'happy': 12, 'funny puk': 1 };
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [{ txt: '', posY: 0, size: 0, align: 'center', fillColor: '', outlineColor: '' }]
+    lines: [{ txt: '', posY: 0, posX: 0, size: 40, align: 'center', fillColor: '', outlineColor: '', font: '' }]
 }
 
 function loadMemes() {
@@ -65,14 +65,13 @@ function getCurrMeme() {
     return gMeme.lines[gMeme.selectedLineIdx];
 }
 
-
-function updateMeme(txt, posY, fillColor, outlineColor) {
-    gMeme.lines.txt = txt;
-    gMeme.lines.size = txt.length;
-    gMeme.posY = posY;
-    gMeme.lines.fillColor = fillColor;
-    gMeme.lines.outlineColor = outlineColor;
-}
+// function updateMeme(txt, posY, fillColor, outlineColor) {
+//     gMeme.lines.txt = txt;
+//     gMeme.lines.size = txt.length;
+//     gMeme.posY = posY;
+//     gMeme.lines.fillColor = fillColor;
+//     gMeme.lines.outlineColor = outlineColor;
+// }
 
 function updateMemeId(id) {
     gMeme.selectedImgId = id;
@@ -80,6 +79,22 @@ function updateMemeId(id) {
 
 function updateSelectedLineIdx(idx) {
     gMeme.selectedLineIdx = idx;
+}
+
+function updateMemePosXY(posX, posY) {
+    var currMeme = getCurrMeme();
+    currMeme.posY = posY;
+    currMeme.posX = posX;
+    _saveMemeToStorage();
+}
+
+function updateTxtSize(operator) {
+    operator === '+' ? gMeme.lines[gMeme.selectedLineIdx].size++ : gMeme.lines[gMeme.selectedLineIdx].size--;
+}
+
+function deleteCurrMeme() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+    _saveMemeToStorage();
 }
 
 function _saveMemeToStorage() {
