@@ -76,9 +76,9 @@ function onMoveText(elBtn) {        // for some reason coulnd't use gElCanvas.le
     gCtx.save();
     var currPic = getPicById(gMeme.selectedImgId);
     drawImg(currPic.url);
-    
+
     gMeme.lines.map(meme => {
-           drawText();
+        drawText();
         switchLine();
     });
 }
