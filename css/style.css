@@ -66,6 +66,12 @@ canvas {
     align-items: center;
 }
 
+.icon {
+    margin-top: 10px;
+    margin-right: 5px;
+    height: 30px;
+}
+
 button {
     font-family: cursive;
     font-weight: bolder;
