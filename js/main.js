@@ -7,6 +7,17 @@ function init() {
     renderPhotos();
 }
 
+function onChoosePic(pic) {
+    var photoId = +pic.dataset.id;
+    var currPhoto = getPicById(photoId);
+    var elPhotosContainer = document.querySelector('.photo-gallery').style;
+    var elTitle = document.querySelector('.h2-gallery').style;
+    elPhotosContainer.visibility = 'hidden';
+    elTitle.visibility = 'hidden';
+    updateMemeId(photoId);
+    drawImg(currPhoto.url);
+}
+
 function onSave(ev) {
     ev.preventDefault();
 
@@ -15,35 +26,38 @@ function onSave(ev) {
     var elMeme = document.getElementById('meme-txt').value;
     var posY = 40;
     var posX = gElCanvas.width / 2;
-
-    updateMeme(elMeme, posY, elColor, elOutline);
+    var meme = {
+        txt: elMeme, posY: posY, posX: posX, size: elMeme.length, align: 'center',
+        fillColor: elColor, outlineColor: elOutline
+    };
+    makeMeme(meme);
+    // updateMeme(elMeme, posY, elColor, elOutline);
     drawText(posX, posY);
 }
 
-function onChoosePic(pic) {
-    var photoId = +pic.dataset.id;
-    var currPhoto = getPicById(photoId);
-    var elPhotosContainer = document.querySelector('.photo-gallery').style;
-    var elTitle = document.querySelector('.h2-gallery').style;
-    elPhotosContainer.visibility = 'hidden';
-    elTitle.visibility = 'hidden';
-    drawImg(currPhoto.url);
+function onMoveDown() {
 
 }
 
-function onInceaseDecreaseFont() {
-
+function onMoveUp() {
+    var currMeme =
+        drawText(gElCanvas.width / 2,)
 }
 
 
 function drawText(x, y) {
+    gCtx.save();
+
+    var currMeme = getCurrMeme();
+
     gCtx.lineWidth = 2;
-    gCtx.strokeStyle = getMemeOutlineClr();
-    gCtx.fillStyle = getMemeFillClr();
+    gCtx.strokeStyle = currMeme.outlineColor;
+    gCtx.fillStyle = currMeme.fillColor;
     gCtx.font = '40px Impact';
     gCtx.textAlign = 'center';
-    gCtx.fillText(getMemeTxt(), x, y);
-    gCtx.strokeText(getMemeTxt(), x, y);
+    gCtx.fillText(currMeme.txt, x, y);
+    gCtx.strokeText(currMeme.txt, x, y);
+
 }
 
 
@@ -57,7 +71,9 @@ function drawImg(url) {
 
 function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-    renderCanvas();
+    var currPic = getPicById(gMeme.selectedImgId);
+    var currUrl = currPic.url;
+    drawImg(currUrl);
 
     // You may clear part of the canvas
     // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height/4)
@@ -67,7 +83,10 @@ function clearCanvas() {
 function renderCanvas() {
     gCtx.fillStyle = "antiquewhite";
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
-    gCtx = gElCanvas.getContext('2d');
+}
+
+function onMoveText(btn) {
+
 }
 
 

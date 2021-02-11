@@ -43,8 +43,10 @@
                             <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
 
                             <div class="btns">
-                                <button class="switch">⇅</button>
-                                <button class="add-line">+</button>
+                                <button class="move-down" onclick="onMoveText(this)">🡫</button>
+                                <button class="move-up" onclick="onMoveText(this)">🡩</button>
+                                <button class="switch" onclick="onSwitchLine()">⇵</button>
+                                <button class="add-line" onclick="onAddLine()">+</button>
                                 
                                 <button class="font-+">A+</button>
                                 <button class="font-">A-</button>
@@ -63,7 +65,7 @@
                         </select> -->
                             <button class="save-inputs">Save Changes</button>
                         </form>
-                        <button class="delete" onclick="renderCanvas(event)">🗑️</button>
+                        <button class="delete" onclick="clearCanvas()">🗑️</button>
                     </section>
                 </section>
             </section>

@@ -10,6 +10,3 @@ function saveToStorage(key, value) {
     localStorage.setItem(key, json);    
 }
 
-function _saveMemeToStorage() {
-    saveToStorage(STORAGE_KEY, gMeme);
-}

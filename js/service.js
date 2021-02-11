@@ -10,23 +10,35 @@ var gElCanvas;
 var gCtx;
 var gStartPos;
 
-var gGallery = [{ id: 1, url: 'sqr-img/1.jpg', keywords: ['speach', 'dictators', 'smug'] }, 
-                { id: 2, url: 'sqr-img/2.jpg', keywords: ['love', 'dogs', 'puppies', 'caring'] }, 
-                {id: 3, url: 'sqr-img/3.jpg', keywords: ['love', 'peacfull', 'baby']}, 
-                {id: 4, url: 'sqr-img/4.jpg', keywords: ['cute', 'peacfull', 'chill']}, 
-                {id: 5, url: 'sqr-img/5.jpg', keywords: ['achieveness', 'baby', 'succsess']}, 
-                {id: 6, url: 'sqr-img/6.jpg', keywords: ['crazy', 'hairstyle', 'passionate']}, 
-                {id: 7, url: 'sqr-img/7.jpg', keywords: ['in shock', 'whatttt', 'baby']}, 
-                {id: 8, url: 'sqr-img/8.jpg', keywords: ['cunning', 'magician', 'patience']}, 
-                {id: 9, url: 'sqr-img/9.jpg', keywords: ['evil', 'freak', 'baby']}, 
-                {id: 10, url: 'sqr-img/10.jpg', keywords: ['happy', 'laugh', 'smile']}];
+var gGallery = [{ id: 1, url: 'sqr-img/1.jpg', keywords: ['speach', 'dictators', 'smug'] },
+{ id: 2, url: 'sqr-img/2.jpg', keywords: ['love', 'dogs', 'puppies', 'caring'] },
+{ id: 3, url: 'sqr-img/3.jpg', keywords: ['love', 'peacfull', 'baby'] },
+{ id: 4, url: 'sqr-img/4.jpg', keywords: ['cute', 'peacfull', 'chill'] },
+{ id: 5, url: 'sqr-img/5.jpg', keywords: ['achieveness', 'baby', 'succsess'] },
+{ id: 6, url: 'sqr-img/6.jpg', keywords: ['crazy', 'hairstyle', 'passionate'] },
+{ id: 7, url: 'sqr-img/7.jpg', keywords: ['in shock', 'whatttt', 'baby'] },
+{ id: 8, url: 'sqr-img/8.jpg', keywords: ['cunning', 'magician', 'patience'] },
+{ id: 9, url: 'sqr-img/9.jpg', keywords: ['evil', 'freak', 'baby'] },
+{ id: 10, url: 'sqr-img/10.jpg', keywords: ['happy', 'laugh', 'smile'] }];
 
 var gKeywords = { 'happy': 12, 'funny puk': 1 };
 
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [{ txt: 'I never eat Falafel', posY: 0, size: 20, align: 'left', fillColor: 'red', outlineColor: 'red' }]
+    lines: [{ txt: '', posY: 0, size: 0, align: 'center', fillColor: '', outlineColor: '' }]
+}
+
+function loadMemes() {
+    var memes = loadFromStorage(STORAGE_KEY);
+    if (memes.lines.length > 1) gMeme.lines = meme.lines;
+    _saveMemeToStorage();
+}
+
+function makeMeme(meme) {
+    gMeme.lines.push(meme);
+    gMeme.selectedLineIdx++;
+    _saveMemeToStorage();
 }
 
 function resizeCanvas() {
@@ -43,23 +55,16 @@ function downloadCanvas(elLink) {
 
 function getPicById(id) {
     // console.log(id)
-   var currPic = gGallery.find(photo => photo.id === id);
-    
+    var currPic = gGallery.find(photo => photo.id === id);
+
     // console.log(currPic);
     return currPic;
 }
 
-function getMemeTxt() {
-    return gMeme.lines.txt;
+function getCurrMeme() {
+    return gMeme.lines[gMeme.selectedLineIdx];
 }
 
-function getMemeFillClr() {
-    return gMeme.lines.fillColor;
-}
-
-function getMemeOutlineClr() {
-    return gMeme.lines.outlineColor;
-}
 
 function updateMeme(txt, posY, fillColor, outlineColor) {
     gMeme.lines.txt = txt;
@@ -69,7 +74,17 @@ function updateMeme(txt, posY, fillColor, outlineColor) {
     gMeme.lines.outlineColor = outlineColor;
 }
 
+function updateMemeId(id) {
+    gMeme.selectedImgId = id;
+}
 
+function updateSelectedLineIdx(idx) {
+    gMeme.selectedLineIdx = idx;
+}
+
+function _saveMemeToStorage() {
+    saveToStorage(STORAGE_KEY, gMeme);
+}
 
 function addListeners() {
     addMouseListeners();
