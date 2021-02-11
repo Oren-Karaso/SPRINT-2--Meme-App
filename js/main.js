@@ -31,6 +31,10 @@ function onChoosePic(pic) {
 
 }
 
+function onInceaseDecreaseFont() {
+
+}
+
 
 function drawText(x, y) {
     gCtx.lineWidth = 2;
@@ -82,7 +86,7 @@ function renderPhotos() {
     var strHtml = '';
     gGallery.map((photo) => {
         strHtml += `<div class="pic pic${photo.id}" data-id="${photo.id}" onclick="onChoosePic(this)" 
-        style="background: url('../sqr-img/${photo.id}.jpg');"></div>`
+        style="background: url('sqr-img/${photo.id}.jpg');"></div>`
     });
     document.querySelector('.photo-gallery').innerHTML = strHtml;
 }
