@@ -55,13 +55,17 @@ function onSwitchLines() {
 
 function onChangeAlignment(el) {
     var currMeme = getCurrMeme();
-    switch (el.dataset) {
-        case 'left': currMeme.lines.align = 'left';
-            break;
-        case 'right': currMeme.lines.align = 'right';
-            break;
-        case 'center': currMeme.lines.align = 'center';
+    console.log('currMeme before:', currMeme.align);
+    switch (el.dataset.align) {
+        case 'ltr': currMeme.align = 'left';
+        break;
+        case 'rtl': currMeme.align = 'right';
+        break;
+        case 'center': currMeme.align = 'center';
     }
+    console.log('currMeme after:', currMeme.align);
+
+    var currPic = getPicById(gMeme.selectedImgId);
     drawImg(currPic.url);
 
     gMeme.lines.map(meme => {

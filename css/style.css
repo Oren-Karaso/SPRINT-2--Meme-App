@@ -97,11 +97,18 @@ canvas {
 
 .btns {
     grid-area: btns;
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fit, 35px);
-    grid-template-rows: repeat(auto-fit, 35px);
-    border: 2px solid black;
-    max-width: 40vw;
+    grid-template-rows: repeat(auto-fit, 35px); */
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid black; */
+    max-width: fit-content;
+    max-height: fit-content;
+
+}
+
+.alignment {
 
 }
 
