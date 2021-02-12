@@ -112,7 +112,7 @@ function deleteCurrMeme() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     gLinesOnScreen--;
     gMeme.selectedLineIdx--;
-    gLinesOnScreen = 1;
+    // gLinesOnScreen = 1;
     _saveMemeToStorage();
 }
 

@@ -25,55 +25,62 @@
         <header>
         </header>
 
-        <div class="main-container">
-            <h2 class="h2-gallery">Choose a pic for your meme</h2>
-            <section class="photo-gallery">
+        <h2 class="h2-gallery">Choose a pic for your meme</h2>
+        <section class="photo-gallery">
 
-            </section>
+        </section>
+        <nav class="main-navbar is-blurred">
 
-            <section class="canvas-container is-blurred">
+        </nav>
+        <div class="main-container is-blurred">
+
+            <section class="canvas-container">
 
                 <canvas id="my-canvas" height="400" width="500"></canvas>
 
-                <section class="controllers-container">
-                    <section class="user-inputs">
-                        <form onsubmit="onSave(event)" class="inputs-form">
-                            <h3 class="shape">What Are You Meming About?</h3>
-                            <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
+                <form onsubmit="onSave(event)" class="inputs-form">
+                    <h3 class="shape">What Are You Meming About?</h3>
+                    <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
 
-                            <div class="color"><img src="icons/colors.PNG" class="icon">
-                                <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
-                            </div>
-                            <div class="color-outline "><img src="icons/pen.PNG" class="icon">
-                                <input class="color-outline" type="color" id="color-outline" form="inputs-form"
-                                    value="#ff0000" />
-                            </div>
-                            <!-- <select class="shape-select margin-right" id="select-shape" form="inputs-form">
+                    <div class="color"><img src="icons/colors.PNG" class="icon">
+                        <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
+                    </div>
+                    <div class="color-outline "><img src="icons/pen.PNG" class="icon">
+                        <input class="color-outline" type="color" id="color-outline" form="inputs-form"
+                            value="#ff0000" />
+                    </div>
+                    <!-- <select class="shape-select margin-right" id="select-shape" form="inputs-form">
                             <option value="rectangle">Rectangle</option>
                             <option value="triangle">Triangle</option>
                             <option value="circle">Circle</option>
                         </select> -->
-                            <button class="save-inputs">Add +</button>
-                        </form>
+                    <button class="save-inputs">Add +</button>
+                </form>
 
-                        <div class="btns">
-                            <button class="move-down" onclick="onMoveText(this)">🡫</button>
-                            <button class="move-up" onclick="onMoveText(this)">🡩</button>
-                            <button class="move-right" onclick="onMoveText(this)">🡪</button>
-                            <button class="move-left" onclick="onMoveText(this)">🡨</button>
-                            <button class="delete" onclick="clearCanvas()">🗑️</button>
-                            <button class="switch" onclick="onSwitchLines()">⇵</button>
-                            <!-- <button class="add-line" onclick="onChooseFont()">+</button> -->
-                            <button class="font-+" onclick="onChangeSize(this)">A+</button>
-                            <button class="font-" onclick="onChangeSize(this)">A-</button>
-                            <button class="rtl-ltr">ltr</button>
-                        </div>
+                <div class="btns">
+                    <button class="move-down" onclick="onMoveText(this)">🡫</button>
+                    <button class="move-up" onclick="onMoveText(this)">🡩</button>
+                    <button class="move-right" onclick="onMoveText(this)">🡪</button>
+                    <button class="move-left" onclick="onMoveText(this)">🡨</button>
+                    <button class="delete" onclick="clearCanvas()">🗑️</button>
+                    <button class="switch" onclick="onSwitchLines()">⇵</button>
+                    <!-- <button class="add-line" onclick="onChooseFont()">+</button> -->
+                    <button class="font-+" onclick="onChangeSize(this)">A+</button>
+                    <button class="font-" onclick="onChangeSize(this)">A-</button>
+                    <button class="alignment" data-align="ltr" onclick="onChangeAlignment(this)"><img src="icons/align-to-left.png" class="icon"></button>
+                    <button class="alignment" data-align="rtl" onclick="onChangeAlignment(this)"><img src="icons/align-to-right.png" class="icon"></button>
+                    <button class="alignment" data-align="center" onclick="onChangeAlignment(this)"><img src="icons/center-text-alignment.png" class="icon"></button>
+                </div>
 
-                    </section>
-                </section>
+                <div class="dwnld-share">
+
+                </div>
+
             </section>
-
         </div>
+        <footer class="main-footer is-blurred">
+
+        </footer>
 
 
         <script src="js/util.js"></script>

@@ -12,7 +12,8 @@ function onChoosePic(pic) {
     var currPhoto = getPicById(photoId);
     var elPhotosContainer = document.querySelector('.photo-gallery').style;
     var elTitle = document.querySelector('.h2-gallery').style;
-    document.querySelector('.is-blurred').classList.remove('is-blurred');
+    var isBlured = document.querySelectorAll('.is-blurred');
+    isBlured.forEach(element => element.classList.remove('is-blurred'));
     elPhotosContainer.visibility = 'hidden';
     elTitle.visibility = 'hidden';
     updateMemeId(photoId);
@@ -52,8 +53,24 @@ function onSwitchLines() {
     switchLine();
 }
 
+function onChangeAlignment(el) {
+    var currMeme = getCurrMeme();
+    switch (el.dataset) {
+        case 'left': currMeme.lines.align = 'left';
+            break;
+        case 'right': currMeme.lines.align = 'right';
+            break;
+        case 'center': currMeme.lines.align = 'center';
+    }
+    drawImg(currPic.url);
 
-function onMoveText(elBtn) {        // for some reason coulnd't use gElCanvas.length in some of the conditions
+    gMeme.lines.map(meme => {
+        drawText();
+        switchLine();
+    });
+}
+
+function onMoveText(elBtn) {
     var currMeme = getCurrMeme();
 
     if (elBtn.innerText === '🡫') {
@@ -67,7 +84,7 @@ function onMoveText(elBtn) {        // for some reason coulnd't use gElCanvas.le
         updateMemePosXY(currMeme.posX, currMeme.posY - 10);
 
     } else if (elBtn.innerText === '🡪') {
-        if (!(currMeme.posX + 10 < 420)) return console.log('Not enough space');
+        if (!(currMeme.posX + 10 < gElCanvas.width - 80)) return console.log('Not enough space');
         updateMemePosXY(currMeme.posX + 10, currMeme.posY);
 
     } else if (elBtn.innerText === '🡨') {
@@ -123,8 +140,14 @@ function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     var currPic = getPicById(gMeme.selectedImgId);
     var currUrl = currPic.url;
-    drawImg(currUrl);
     deleteCurrMeme();
+    gCtx.save();
+    var currPic = getPicById(gMeme.selectedImgId);
+    drawImg(currPic.url);
+    gMeme.lines.map(meme => {
+        drawText();
+        switchLine();
+    });
 }
 
 function renderCanvas() {
