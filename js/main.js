@@ -76,22 +76,23 @@ function onChangeAlignment(el) {
 
 function onMoveText(elBtn) {
     var currMeme = getCurrMeme();
+    elBtn = elBtn.dataset.direction;
 
-    if (elBtn.innerText === '🡫') {
+    if (elBtn === 'down') {
         if (!(currMeme.posY + 10 < gElCanvas.height)) return console.log('Not enough space');
 
         updateMemePosXY(currMeme.posX, currMeme.posY + 10);
 
-    } else if (elBtn.innerText === '🡩') {
+    } else if (elBtn === 'up') {
         if (!(currMeme.posY - 10 > 40)) return console.log('Not enough space');
 
         updateMemePosXY(currMeme.posX, currMeme.posY - 10);
 
-    } else if (elBtn.innerText === '🡪') {
+    } else if (elBtn === 'right') {
         if (!(currMeme.posX + 10 < gElCanvas.width - 80)) return console.log('Not enough space');
         updateMemePosXY(currMeme.posX + 10, currMeme.posY);
 
-    } else if (elBtn.innerText === '🡨') {
+    } else if (elBtn === 'left') {
         if (!(currMeme.posX - 10 > 70)) return console.log('Not enough space');
 
         updateMemePosXY(currMeme.posX - 10, currMeme.posY);
@@ -108,7 +109,7 @@ function onMoveText(elBtn) {
 }
 
 function onChangeSize(elBtn) {
-    if (elBtn.innerText === 'A+') updateTxtSize('+');
+    if (elBtn.dataset.size === '+') updateTxtSize('+');
     else updateTxtSize('-');
 
     gCtx.save();
@@ -140,7 +141,8 @@ function drawImg(url) {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
-function clearCanvas() {
+function clearCanvas(ev) {
+    ev.preventDefault();
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     var currPic = getPicById(gMeme.selectedImgId);
     var currUrl = currPic.url;

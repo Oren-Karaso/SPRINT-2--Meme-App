@@ -39,41 +39,50 @@
                 <canvas id="my-canvas" height="400" width="500"></canvas>
 
                 <form onsubmit="onSave(event)" class="inputs-form">
-                    <h3 class="shape">What Are You Meming About?</h3>
+                    <h3 class="What">What Are You Meming About?</h3>
                     <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
 
-                    <div class="color"><img src="icons/colors.PNG" class="icon">
+                    <div class="color icon flex ai-center"><img src="icons/paint-board-and-brush.png">
                         <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
                     </div>
-                    <div class="color-outline "><img src="icons/pen.PNG" class="icon">
+                    <div class="color-outline icon flex ai-center"><img src="icons/text stroke.png">
                         <input class="color-outline" type="color" id="color-outline" form="inputs-form"
                             value="#ff0000" />
                     </div>
-                    <!-- <select class="shape-select margin-right" id="select-shape" form="inputs-form">
-                            <option value="rectangle">Rectangle</option>
-                            <option value="triangle">Triangle</option>
-                            <option value="circle">Circle</option>
-                        </select> -->
-                    <button class="save-inputs">Add +</button>
+
+                    <div class="del-save flex">
+                        <button class="btn icon" id="save"><img src="icons/add.png"></button>
+                        <div class="delete icon" id="del" onclick="clearCanvas(event)"><img src="icons/trash.png"></div>
+                    </div>
                 </form>
 
-                <div class="btns">
-                    <button class="move-down" onclick="onMoveText(this)">🡫</button>
-                    <button class="move-up" onclick="onMoveText(this)">🡩</button>
-                    <button class="move-right" onclick="onMoveText(this)">🡪</button>
-                    <button class="move-left" onclick="onMoveText(this)">🡨</button>
-                    <button class="delete" onclick="clearCanvas()">🗑️</button>
-                    <button class="switch" onclick="onSwitchLines()">⇵</button>
+                <div class="btns grid tr-auto tc-auto">
+                    <dic class="move-down icon" data-direction="down" onclick="onMoveText(this)"><img
+                            src="icons/down.png"></dic>
+                    <dic class="move-up icon" data-direction="up" onclick="onMoveText(this)"><img src="icons/up.png">
+                    </dic>
+                    <dic class="move-right icon" data-direction="right" onclick="onMoveText(this)"><img
+                            src="icons/right.png"></dic>
+                    <dic class="move-left icon" data-direction="left" onclick="onMoveText(this)"><img
+                            src="icons/left.png"></dic>
+                    <div class="switch icon" onclick="onSwitchLines()"><img
+                            src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></div>
                     <!-- <button class="add-line" onclick="onChooseFont()">+</button> -->
-                    <button class="font-+" onclick="onChangeSize(this)">A+</button>
-                    <button class="font-" onclick="onChangeSize(this)">A-</button>
-                    <button class="alignment" data-align="ltr" onclick="onChangeAlignment(this)"><img src="icons/align-to-left.png" class="icon"></button>
-                    <button class="alignment" data-align="rtl" onclick="onChangeAlignment(this)"><img src="icons/align-to-right.png" class="icon"></button>
-                    <button class="alignment" data-align="center" onclick="onChangeAlignment(this)"><img src="icons/center-text-alignment.png" class="icon"></button>
+                    <div class="font-+ icon" data-size="+" onclick="onChangeSize(this)"><img
+                            src="icons/increase font - icon.png"></div>
+                    <div class="font- icon" data-size="-" onclick="onChangeSize(this)"><img
+                            src="icons/decrease font - icon.png"></div>
+                    <div class="alignment icon" data-align="ltr" onclick="onChangeAlignment(this)"><img
+                            src="icons/align-to-left.png"></div>
+                    <div class="alignment icon" data-align="rtl" onclick="onChangeAlignment(this)"><img
+                            src="icons/align-to-right.png"></div>
+                    <div class="alignment icon" data-align="center" onclick="onChangeAlignment(this)"><img
+                            src="icons/center-text-alignment.png"></div>
                 </div>
 
                 <div class="dwnld-share">
-
+                    <button class="share-download">SHARE</button>
+                    <button class="share-download">DOWNLOAD</button>
                 </div>
 
             </section>
