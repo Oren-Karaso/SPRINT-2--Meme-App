@@ -24,9 +24,11 @@ function onSave(ev) {
 
     if (gLinesOnScreen === 3) return console.log('Too many text lines');
 
+    var elMeme = document.getElementById('meme-txt').value;
+    if (elMeme === '' || (/^\s/.test(elMeme))) return console.log('No Name was entered');
+
     var elColor = document.getElementById('color').value;
     var elOutline = document.getElementById('color-outline').value;
-    var elMeme = document.getElementById('meme-txt').value;
     var posY = 40;
     var posX = (gElCanvas.width) / 2;
 
@@ -91,7 +93,10 @@ function onChangeSize(elBtn) {
     gCtx.save();
     var currPic = getPicById(gMeme.selectedImgId);
     drawImg(currPic.url);
-    drawText();
+    gMeme.lines.map(meme => {
+        drawText();
+        switchLine();
+    });
 }
 
 function drawText() {
