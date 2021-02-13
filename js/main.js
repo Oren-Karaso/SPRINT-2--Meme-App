@@ -121,6 +121,13 @@ function onChangeSize(elBtn) {
     });
 }
 
+function onDownloadCanvas(elLink) {
+    
+        var imgContent = gElCanvas.toDataURL('image/jpeg');
+        elLink.href = imgContent;
+    
+}
+
 function drawText() {
 
     var currMeme = getCurrMeme();
@@ -171,13 +178,3 @@ function renderPhotos() {
     document.querySelector('.photo-gallery').innerHTML = strHtml;
 }
 
-// function renderShape() {
-//     const { pos, color, size } = gCurrentSahpe;
-//     switch (gCurrentSahpe.name) {
-//         case 'triangle': drawTriangle(pos.x, pos.y);
-//             break;
-//         case 'rectangle': drawRect(pos.x, pos.y);
-//             break;
-//         case 'circle': drawArc(pos.x, pos.y);
-//     }
-// }

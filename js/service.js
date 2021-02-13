@@ -53,11 +53,7 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight;
 }
 
-function downloadCanvas(elLink) {
-    const data = gElCanvas.toDataURL()
-    elLink.href = data;
-    elLink.download = 'my-img.jpg';
-}
+
 
 function getPicById(id) {
     // console.log(id)

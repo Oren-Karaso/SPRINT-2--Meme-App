@@ -169,7 +169,6 @@ canvas {
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    /* border: 2px solid black; */
     margin-top: 10px;
     max-width: 40vw;
 }
@@ -213,6 +212,13 @@ canvas {
     font-family: cursive;
     font-size: inherit;
     padding: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.share-download:hover {
+background-color:  rgba(61, 61, 167, 0.836);
+
 }
 
 .main-footer {
@@ -449,3 +455,16 @@ max-width: 35vw;
         left: 20px;
     }
 }
+
+@media (max-width: 360px) {
+   .main-container {
+    height: 590px;
+   } 
+    
+    .dwnld-share {
+        bottom: 2px;
+        position: relative;
+        left: 20px;
+    }
+
+    }
