@@ -39,21 +39,22 @@
                 <canvas id="my-canvas" height="400" width="500"></canvas>
 
                 <form onsubmit="onSave(event)" class="inputs-form">
-                    <h3 class="What">What Are You Meming About?</h3>
                     <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
+                    <!-- <section class="input-btns"> -->
+                        <div class="color icon flex ai-center"><img src="icons/paint-board-and-brush.png">
+                            <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
+                        </div>
+                        <div class="color-outline icon flex ai-center"><img src="icons/text stroke.png">
+                            <input class="color-outline" type="color" id="color-outline" form="inputs-form"
+                                value="#ff0000" />
+                        </div>
 
-                    <div class="color icon flex ai-center"><img src="icons/paint-board-and-brush.png">
-                        <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
-                    </div>
-                    <div class="color-outline icon flex ai-center"><img src="icons/text stroke.png">
-                        <input class="color-outline" type="color" id="color-outline" form="inputs-form"
-                            value="#ff0000" />
-                    </div>
-
-                    <div class="del-save flex">
-                        <button class="btn icon" id="save"><img src="icons/add.png"></button>
-                        <div class="delete icon" id="del" onclick="clearCanvas(event)"><img src="icons/trash.png"></div>
-                    </div>
+                        <div class="del-save flex">
+                            <button class="btn icon" id="save"><img src="icons/add.png"></button>
+                            <div class="delete icon" id="del" onclick="clearCanvas(event)"><img src="icons/trash.png">
+                            </div>
+                        </div>
+                    <!-- </section> -->
                 </form>
 
                 <div class="btns grid tr-auto tc-auto">
