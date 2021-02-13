@@ -75,7 +75,6 @@ input {
 
 body {
     margin: 0;
-    /* height: 100vh; */
 }
 
 .main-container {
@@ -149,7 +148,7 @@ body {
 }
 
 #meme-txt {
-    width: 250px;
+    width: 350px;
 }
 
 canvas {
@@ -226,6 +225,7 @@ canvas {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-top: 6px solid #1e1e1e;
 }
 
 .footer-title {
@@ -312,8 +312,8 @@ canvas {
         margin-left: 10px;
     }
     #meme-txt {
-        width: auto;
-    }
+max-width: 35vw;   
+ }
     .dwnld-share {
         grid-area: dwnld-share;
         /* border: 2px solid black; */
@@ -360,7 +360,7 @@ canvas {
         max-width: 40vw;
     }
     #meme-txt {
-        width: 150px;
+        max-width: 37vw;   
     }
     .dwnld-share {
         grid-area: dwnld-share;
@@ -411,7 +411,7 @@ canvas {
     }
     #meme-txt {
         grid-area: meme-txt;
-        width: 90vw;
+        max-width: 90vw;   
         margin: auto;
     }
     .color {

@@ -3,9 +3,6 @@
 var STORAGE_KEY = 'my-meme';
 var gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 
-// let gCurrentSahpe;
-// let gCurrentColor;
-// let gCurrOutlineColor;
 var gElCanvas;
 var gCtx;
 var gStartPos;
@@ -112,7 +109,6 @@ function deleteCurrMeme() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     gLinesOnScreen--;
     gMeme.selectedLineIdx--;
-    // gLinesOnScreen = 1;
     _saveMemeToStorage();
 }
 
