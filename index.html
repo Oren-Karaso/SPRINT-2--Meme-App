@@ -9,101 +9,97 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <!DOCTYPE html>
-    <html lang="en">
+<body onload="init()">
+    <header>
+    </header>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
+    <h2 class="h2-gallery">Choose a pic for your meme</h2>
+    <section class="photo-gallery">
 
-    <body onload="init()">
-        <header>
-        </header>
+    </section>
+    <nav class="main-navbar flex ai-center is-blurred">
+        <h2 class="navbar-title">memegen</h2>
+        <ul class="main-navbar nav-list clean-list flex ai-center">
+            <li>
+                <a href="#" class="active">Gallery</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="main-container is-blurred">
 
-        <h2 class="h2-gallery">Choose a pic for your meme</h2>
-        <section class="photo-gallery">
+        <section class="canvas-container">
+
+            <canvas id="my-canvas" height="400" width="500"></canvas>
+
+            <form onsubmit="onSave(event)" class="inputs-form">
+                <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
+                <!-- <section class="input-btns"> -->
+                <div class="color icon flex ai-center"><img src="icons/paint-board-and-brush.png">
+                    <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
+                </div>
+                <div class="color-outline icon flex ai-center"><img src="icons/text stroke.png">
+                    <input class="color-outline" type="color" id="color-outline" form="inputs-form" value="#ff0000" />
+                </div>
+
+                <div class="del-save flex">
+                    <button class="btn icon" id="save"><img src="icons/add.png"></button>
+                    <div class="delete icon" id="del" onclick="clearCanvas(event)"><img src="icons/trash.png">
+                    </div>
+                </div>
+                <!-- </section> -->
+            </form>
+
+            <div class="btns grid tr-auto tc-auto">
+                <dic class="move-down icon" data-direction="down" onclick="onMoveText(this)"><img src="icons/down.png">
+                </dic>
+                <dic class="move-up icon" data-direction="up" onclick="onMoveText(this)"><img src="icons/up.png">
+                </dic>
+                <dic class="move-right icon" data-direction="right" onclick="onMoveText(this)"><img
+                        src="icons/right.png"></dic>
+                <dic class="move-left icon" data-direction="left" onclick="onMoveText(this)"><img src="icons/left.png">
+                </dic>
+                <div class="switch icon" onclick="onSwitchLines()"><img
+                        src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></div>
+                <!-- <button class="add-line" onclick="onChooseFont()">+</button> -->
+                <div class="font-+ icon" data-size="+" onclick="onChangeSize(this)"><img
+                        src="icons/increase font - icon.png"></div>
+                <div class="font- icon" data-size="-" onclick="onChangeSize(this)"><img
+                        src="icons/decrease font - icon.png"></div>
+                <div class="alignment icon" data-align="ltr" onclick="onChangeAlignment(this)"><img
+                        src="icons/align-to-left.png"></div>
+                <div class="alignment icon" data-align="rtl" onclick="onChangeAlignment(this)"><img
+                        src="icons/align-to-right.png"></div>
+                <div class="alignment icon" data-align="center" onclick="onChangeAlignment(this)"><img
+                        src="icons/center-text-alignment.png"></div>
+            </div>
+
+            <div class="dwnld-share">
+                <button class="share-download">SHARE</button>
+                <button class="share-download">DOWNLOAD</button>
+            </div>
 
         </section>
-        <nav class="main-navbar is-blurred">
-
-        </nav>
-        <div class="main-container is-blurred">
-
-            <section class="canvas-container">
-
-                <canvas id="my-canvas" height="400" width="500"></canvas>
-
-                <form onsubmit="onSave(event)" class="inputs-form">
-                    <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
-                    <!-- <section class="input-btns"> -->
-                        <div class="color icon flex ai-center"><img src="icons/paint-board-and-brush.png">
-                            <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
-                        </div>
-                        <div class="color-outline icon flex ai-center"><img src="icons/text stroke.png">
-                            <input class="color-outline" type="color" id="color-outline" form="inputs-form"
-                                value="#ff0000" />
-                        </div>
-
-                        <div class="del-save flex">
-                            <button class="btn icon" id="save"><img src="icons/add.png"></button>
-                            <div class="delete icon" id="del" onclick="clearCanvas(event)"><img src="icons/trash.png">
-                            </div>
-                        </div>
-                    <!-- </section> -->
-                </form>
-
-                <div class="btns grid tr-auto tc-auto">
-                    <dic class="move-down icon" data-direction="down" onclick="onMoveText(this)"><img
-                            src="icons/down.png"></dic>
-                    <dic class="move-up icon" data-direction="up" onclick="onMoveText(this)"><img src="icons/up.png">
-                    </dic>
-                    <dic class="move-right icon" data-direction="right" onclick="onMoveText(this)"><img
-                            src="icons/right.png"></dic>
-                    <dic class="move-left icon" data-direction="left" onclick="onMoveText(this)"><img
-                            src="icons/left.png"></dic>
-                    <div class="switch icon" onclick="onSwitchLines()"><img
-                            src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></div>
-                    <!-- <button class="add-line" onclick="onChooseFont()">+</button> -->
-                    <div class="font-+ icon" data-size="+" onclick="onChangeSize(this)"><img
-                            src="icons/increase font - icon.png"></div>
-                    <div class="font- icon" data-size="-" onclick="onChangeSize(this)"><img
-                            src="icons/decrease font - icon.png"></div>
-                    <div class="alignment icon" data-align="ltr" onclick="onChangeAlignment(this)"><img
-                            src="icons/align-to-left.png"></div>
-                    <div class="alignment icon" data-align="rtl" onclick="onChangeAlignment(this)"><img
-                            src="icons/align-to-right.png"></div>
-                    <div class="alignment icon" data-align="center" onclick="onChangeAlignment(this)"><img
-                            src="icons/center-text-alignment.png"></div>
-                </div>
-
-                <div class="dwnld-share">
-                    <button class="share-download">SHARE</button>
-                    <button class="share-download">DOWNLOAD</button>
-                </div>
-
-            </section>
-        </div>
-        <footer class="main-footer is-blurred">
-
-        </footer>
+    </div>
+    <footer class="main-footer is-blurred">
+        <h2 class="footer-title">memegen</h2>
+        <h4 class="footer-txt">all rights reserved 2021</h2>
+    </footer>
 
 
-        <script src="js/util.js"></script>
-        <script src="js/storage-service.js"></script>
-        <script src="js/service.js"></script>
-        <script src="js/main.js"></script>
-
-    </body>
-
-    </html>
-
+    <script src="js/util.js"></script>
+    <script src="js/storage-service.js"></script>
     <script src="js/service.js"></script>
     <script src="js/main.js"></script>
+
+</body>
+
+</html>
+
+<script src="js/service.js"></script>
+<script src="js/main.js"></script>
 </body>
 
 </html>
