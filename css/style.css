@@ -128,8 +128,7 @@ body {
 }
 
 .navbar-title {
-    font-family: fantasy;
-    font-size: xx-large;
+    height: 3rem;
     margin-top: 5px;
     margin-left: 10px;
 }
@@ -235,8 +234,7 @@ background-color:  rgba(61, 61, 167, 0.836);
 }
 
 .footer-title {
-    font-family: fantasy;
-    font-size: xx-large;
+    height: 3rem;
     margin-top: 5px;
 }
 
@@ -375,6 +373,14 @@ max-width: 35vw;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+    }
+
+    .footer-title {
+        height: 1.5rem;
+    }
+
+    .navbar-title {
+        height: 1.5rem;
     }
 }
 
