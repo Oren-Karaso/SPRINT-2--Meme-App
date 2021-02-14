@@ -11,23 +11,29 @@
 
 <body onload="init()">
     <header>
+        <nav class="main-navbar flex ai-center">
+            <img onclick="renderPhotos()" class="navbar-title" src="icons/LOGO.png">
+            <ul class="main-navbar nav-list clean-list flex ai-center">
+                <li>
+                    <a href="#" class="active" onclick="renderPhotos()">Gallery</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
-    <h2 class="h2-gallery">Choose a pic for your meme</h2>
-    <section class="photo-gallery">
+    <section class="gallery-search">
+        <form onsubmit="onFilter(event)">
+            <input type="text" oninput="onFilter(event)" name="search" placeholder="Search by keyword" id="search" class="h2-gallery">
+        </form>
+    
+    </section>
+
+    <section class="img-gallery">
 
     </section>
-    <nav class="main-navbar flex ai-center is-blurred">
-        <img class="navbar-title" src="icons/LOGO.png">
-        <ul class="main-navbar nav-list clean-list flex ai-center">
-            <li>
-                <a href="#" class="active">Gallery</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-        </ul>
-    </nav>
     <div class="main-container is-blurred">
 
         <section class="canvas-container">
@@ -36,7 +42,6 @@
 
             <form onsubmit="onSave(event)" class="inputs-form">
                 <input type="text" name="meme-txt" id="meme-txt" placeholder="Your Meme...">
-                <!-- <section class="input-btns"> -->
                 <div class="color icon flex ai-center"><img src="icons/paint-board-and-brush.png">
                     <input class="color-fill" type="color" id="color" form="inputs-form" value="#ff0000" />
                 </div>
@@ -49,10 +54,10 @@
                     <div class="delete icon" id="del" onclick="clearCanvas(event)"><img src="icons/trash.png">
                     </div>
                 </div>
-                <!-- </section> -->
             </form>
 
             <div class="btns grid tr-auto tc-auto jc-center">
+
                 <dic class="move-down icon" data-direction="down" onclick="onMoveText(this)"><img src="icons/down.png">
                 </dic>
                 <dic class="move-up icon" data-direction="up" onclick="onMoveText(this)"><img src="icons/up.png">
@@ -63,7 +68,6 @@
                 </dic>
                 <div class="switch icon" onclick="onSwitchLines()"><img
                         src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></div>
-                <!-- <button class="add-line" onclick="onChooseFont()">+</button> -->
                 <div class="font-+ icon" data-size="+" onclick="onChangeSize(this)"><img
                         src="icons/increase font - icon.png"></div>
                 <div class="font- icon" data-size="-" onclick="onChangeSize(this)"><img
@@ -83,14 +87,12 @@
 
         </section>
     </div>
-    <footer class="main-footer is-blurred">
+    <footer class="main-footer">
         <img class="footer-title" src="icons/LOGO.png">
         <h4 class="footer-txt">all rights reserved 2021®</h2>
     </footer>
 
 
-    <script src="js/util.js"></script>
-    <script src="js/storage-service.js"></script>
     <script src="js/service.js"></script>
     <script src="js/main.js"></script>
 
@@ -98,6 +100,7 @@
 
 </html>
 
+<script src="js/storage-service.js"></script>
 <script src="js/service.js"></script>
 <script src="js/main.js"></script>
 </body>
